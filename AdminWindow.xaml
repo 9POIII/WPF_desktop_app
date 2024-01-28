@@ -1,0 +1,85 @@
+﻿<Window x:Class="FinanceApp2._0.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinanceApp2._0"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Finance App" Height="600" Width="1000" ResizeMode="CanMinimize" Icon="/Images/pngwing.com.png" WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#CCCC99">
+        <Image Source="/Images/pngwing.com.png" />
+        <Border x:Name="RegistrationWindow" MinWidth="400" Margin="15" Background="#CCCCCC" VerticalAlignment="Center" Padding="30" MaxWidth="850" CornerRadius="20" Opacity="0.9">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="100" Color="LightGray"/>
+            </Border.Effect>
+            
+            <StackPanel>
+                <TextBlock Text="Admin panel:" FontSize="24" FontWeight="DemiBold" Margin="0 0 0 20"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="250"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Login:"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Email:"/>
+                    <TextBlock Grid.Column="2" Grid.Row="0" Text="Password:"/>
+                    <TextBlock Grid.Column="3" Grid.Row="0" Text="Id:"/>
+                    <TextBlock Grid.Column="4" Grid.Row="0" Text="Is banned:"/>
+                    <TextBlock Grid.Column="5" Grid.Row="0" Text="Status:"/>
+
+                    <ListView x:Name="listOfUsers" Grid.Row="1" Grid.ColumnSpan="7" HorizontalAlignment="Left" VerticalAlignment="Top" Height="245" Margin="0,10,0,0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="200"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="25"/>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="160"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" Text="{Binding Login}" FontWeight="Bold" DockPanel.Dock="Left"/>
+
+                                    <TextBlock Grid.Column="1" Text="{Binding Email}" DockPanel.Dock="Left"/>
+
+                                    <TextBlock Grid.Column="2" Text="{Binding Password}" DockPanel.Dock="Left"/>
+
+                                    <TextBlock Grid.Column="3" Text="{Binding Id}" DockPanel.Dock="Left"/>
+
+                                    <TextBlock Grid.Column="4" Text="{Binding IsBanned}" DockPanel.Dock="Left"/>
+
+                                    <TextBlock Grid.Column="5" Text="{Binding Status}" DockPanel.Dock="Left"/>
+
+                                    <Grid Grid.Column="6" HorizontalAlignment="Left" VerticalAlignment="Stretch" DockPanel.Dock="Right" Width="150">
+                                        <Button x:Name="BanButton" Content="Ban" Click="ToggleBanButton_Click" HorizontalAlignment="Left"/>
+                                        <Button Content="Unban" Click="ToggleBanButton_Click"  HorizontalAlignment="Right"/>
+                                    </Grid>
+
+
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
